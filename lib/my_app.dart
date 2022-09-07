@@ -38,8 +38,10 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
 
-    TextEditingController _emailController = TextEditingController();
-    TextEditingController _passController = TextEditingController();
+    final emailEditingController = TextEditingController();
+    final passwordEdittingController = TextEditingController();
+    String _email;
+    String _pass;
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -67,7 +69,10 @@ class _LoginScreenState extends State<LoginScreen> {
             height: 44.0,
           ),
           TextField(
-            controller: _emailController,
+            controller: emailEditingController,
+            onChanged: (textEmail){
+              _email = textEmail;
+            },
             keyboardType: TextInputType.emailAddress,
             decoration: const InputDecoration(
               hintText: "Enter your email",
@@ -79,7 +84,10 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           TextField(
             obscureText: true,
-            controller: _passController,
+            controller: passwordEdittingController,
+            onChanged: (textPass){
+              _pass = textPass;
+            },
             decoration: const InputDecoration(
               hintText: "Enter your password",
               prefixIcon: Icon(Icons.security, color: Colors.black),
